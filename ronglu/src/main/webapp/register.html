@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>注册</title>
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/shake.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/animate.min.css" rel="stylesheet" type="text/css">
+    <link href="css/idangerous.swiper.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/wo.js"></script>
+</head>
+<body style="background-color: #fff !important;">
+<div class="warpe">
+    <div class="head">
+        <a href="login.html" class="return"><i class="icon-chevron-left"></i> 返回</a>
+        注册
+    </div>
+    <div class="main">
+        <div class="regall">
+            <div class="reginput">
+                <input id="name" name="name" type="text" placeholder="姓名">
+                <input id="phone" name="phone" maxlength="11" type="text" placeholder="手机号">
+                <input id="cardNo" name="cardNo" maxlenth='18' type="text" placeholder="身份证号码">
+                <input id="password" name="password" type="password" placeholder="密码" >
+            </div>
+            <div class="regTxt">
+                <p><label><input type="checkbox" checked="false">同意"注册与服务协议"</label></p>
+            </div>
+            <div class="id_bth inersest_bth animated bounceIn">
+                <a onclick="reg()">注册</a>
+            </div>
+            <div  class="M_no">
+                <p id="message"></p>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="navside">
+    <ul>
+        <li class="margin_left animated bounceInLeft homeTab">
+            <a href="index.html">
+                <p><i class="icon-home-hover1"></i> </p>
+                <span>首页</span>
+            </a>
+        </li>
+        <li class="animated bounceInRight searchTab">
+            <a href="search.html">
+                <p><i class="icon-globe1"></i> </p>
+                <span>查询</span>
+            </a>
+        </li>
+        <li class="animated bounceInLeft centers">
+            <a href="#">
+                <p><i class="icon-star-empty1"></i> </p>
+                <span>地图</span>
+            </a>
+        </li>
+        <li class="animated bounceInRight workTab ">
+            <a href="work.html">
+                <p><i class="icon-columns1"></i> </p>
+                <span>办事</span>
+            </a>
+        </li>
+        <li class="animated bounceInLeft mineTab mine_tab_hover">
+            <a href="mine.html" class="navside_hover">
+                <p><i class="  icon-th-large1"></i> </p>
+                <span>我的</span>
+            </a>
+        </li>
+    </ul>
+</div>
+    
+<div class="Collection animatedbou bounces fadeInUp dis_none" >
+   <div class='bouncesTop' onclick='hide();'></div>
+   <div class='bouncesBottom M_no'>
+       <p class="bottomTitle">恭喜您注册成功!</p>
+       <p>欢迎您使用健康北京APP</p>
+       <p>您可以使用手机号进行登录</p>
+       <div class="id_bth inersest_bth prombtn">
+                <a  href="login.html">去登录</a>
+       </div>
+   </div>
+</div>
+
+</body>
+    <script type="text/javascript">
+        var url;
+        $(function(){
+            
+            $.getJSON ("js/json.txt", function (data) {  
+                url = data.url;
+            });
+        });
+        function reg() {
+			$.ajax({
+                type:'POST',
+                dataType:'json',
+                url:url+"?reqJson={'queryType':'registUser','reqData':{'phone':'"+$('#phone').val()+"','name':'"+encodeURI(encodeURI($('#name').val()))+"','cardNo':'"+$('#cardNo').val()+"','password':'"+$('#password').val()+"'},'appId':'1','version':'1.0'}&sign=185a0a28b7153aeae053ef019c25df23",
+                success:function(req){
+                    if(req.retJson.retCode==1){
+                        $('.Collection').show();
+                    }else{
+                        $('#message').html(req.retJson.retDesc)
+                    }
+                }
+            });
+		}
+        function hide(){
+            $('.Collection').hide();
+        }
+    </script>
+</html>

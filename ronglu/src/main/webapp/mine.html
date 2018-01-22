@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>商机列表</title>
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/shake.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/mobiscroll.custom-2.17.1.min.css" />
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/urlParam.js"></script>
+<script type="text/javascript" src="js/sinoCookie.js"></script>
+    <script>
+
+       
+    </script>
+</head>
+<body>
+<div class="warpe">
+ <h1>程序员在拼命研发中。。。</h1> 
+ 
+ <div class="id_bth inersest_bth animated bounceIn bottom_btn">
+                    <a onclick="logout()">切换账号</a>
+                </div> 
+</div>
+
+
+    
+<div class="navside">
+    <ul>
+        <li class="margin_left animated bounceInLeft homeTab">
+            <a href="myinfolist.html">
+                <p><i class="icon-home-hover1"></i> </p>
+                <span>商机列表</span>
+            </a>
+        </li>
+        <!-- <li class="animated bounceInRight searchTab">
+            <a href="search.html">
+                <p><i class="icon-globe1"></i> </p>
+                <span>查询</span>
+            </a>
+        </li>
+        <li class="animated bounceInLeft centers">
+            <a href="http://121.28.128.10:20523/app/navigation/toNavigationInfo.action">
+                <p><i class="icon-star-empty1"></i> </p>
+                <span>地图</span>
+            </a>
+        </li> -->
+        <li class="animated bounceInRight workTab  ">
+            <a href="infoform.html" >
+                <p><i class="icon-columns1"></i> </p>
+                <span>发布商机</span>
+            </a>
+        </li>
+        <li class="animated bounceInLeft mineTab mine_tab_hover">
+            <a href="mine.html" class="navside_hover">
+                <p><i class="  icon-th-large1"></i> </p>
+                <span>我的</span>
+            </a>
+        </li>
+    </ul>
+</div>
+    
+
+    
+<script type="text/javascript">
+function logout(){
+    delCookie('phone');
+    window.location.href="login.html";
+}
+</script>
+</body>
+</html>

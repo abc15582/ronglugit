@@ -1,0 +1,190 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="telephone=no" name="format-detection" />
+<title>商机列表</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="css/shake.css" rel="stylesheet" type="text/css">
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="css/animate.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/urlParam.js"></script>
+<script type="text/javascript" src="js/sinoCookie.js"></script>
+<style media="screen">
+      * {margin: 0;padding: 0;}
+      ul {list-style: none;}
+      .sl-content {
+            overflow: hidden;
+          }
+      .sl-content img {
+        width: 120px;
+        height: auto;
+        margin-right: 8px;
+        float: left;
+      }
+      .sl-li {
+        position: relative;
+        background-color: #fff;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        
+        line-height: 1.4rem;
+         border-bottom: 1px solid #D9D9D9;
+      }
+      .sl-li .sl-content {
+        height: 100%;
+        overflow: hidden;
+        padding: 20px;
+        position: relative;
+        z-index: 10;
+        background-color: #fff;
+      }
+      .sl-li .sl-content.animated {
+        -webkit-transition: -webkit-transform .2s ease-out;
+        transition: transform .2s ease-out;
+      }
+      .sl-li .sl-opts {
+        height: 100%;
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 0;
+      }
+      .sl-li .sl-opts span {
+        height: 100%;
+        padding: 0 10px;
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+      }
+
+      .sl-content img{
+        width: 38px;
+        height: 30px;
+      }
+      .sl-content p{
+        font-size: 14px;
+        color: #666;
+        margin-top: 10px;
+      }
+</style>
+</head>
+
+<body>
+   <div class="head">
+      <!--   <a href="mine.html" class="return"><i class="icon-chevron-left"></i></a> -->
+        商机列表
+    </div>
+
+    <div class="warpe">
+      <section>
+        <ul id='dataTable'>
+          
+
+        </ul>
+      </section>
+
+      <!-- <div class="id_bth inersest_bth animated bounceIn" style="padding-top:2rem">
+          <a href="mine.html" style="width: 55%;">确定</a>
+      </div>   -->
+    </div>
+<div class="navside">
+    <ul>
+        <li class="margin_left animated bounceInLeft homeTab home_tab_hover">
+            <a href="myinfolist.html"  class="navside_hover">
+                <p><i class="icon-home-hover1"></i> </p>
+                <span>商机列表</span>
+            </a>
+        </li>
+        <!-- <li class="animated bounceInRight searchTab">
+            <a href="search.html">
+                <p><i class="icon-globe1"></i> </p>
+                <span>查询</span>
+            </a>
+        </li>
+        <li class="animated bounceInLeft centers">
+            <a href="http://121.28.128.10:20523/app/navigation/toNavigationInfo.action">
+                <p><i class="icon-star-empty1"></i> </p>
+                <span>地图</span>
+            </a>
+        </li> -->
+        <li class="animated bounceInRight workTab ">
+            <a href="infoform.html">
+                <p><i class="icon-columns1"></i> </p>
+                <span>发布商机</span>
+            </a>
+        </li>
+        <li class="animated bounceInLeft mineTab">
+            <a href="mine.html">
+                <p><i class="  icon-th-large1"></i> </p>
+                <span>我的</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/slideleft.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+	var url;
+	var phone;
+	$(function(){
+		if(getCookie('phone')!=null){
+            phone = getCookie('phone');
+        }else{
+        	window.location.href='login.html';
+        }
+	    $.getJSON ("js/json.txt", function (data) {  
+	        url = data.url;
+	        initData();
+	    });
+	    
+	});
+	function initData() {
+		
+		$.ajax({
+	        type:'GET',
+	        dataType:'json',
+	        url:url+"/info/list?"+'username='+phone,
+	        success:function(req){
+	            if(req!=null){
+	                var html = "";
+	                html+='<li class="sl-li ui-border-b">';
+	            	html+='<div class="sl-content"><img src="img/ico_remind_article@2x.png">';
+	            	html+='<p>功能还在完善中，目前仅支持查看标题</p></div>';  
+	            	html+='<div class="sl-opts"><span style="background-color: #F95F61; color: #fff;" onclick="testA()">标记已读</span><span style="background-color: #ff9c00; color: #fff;" onclick="testA()">删除</span></div>';
+	            	html+='</li>';
+	                var list = req;
+	                for(var i=0; i<list.length;i++){
+	                	html+='<li class="sl-li ui-border-b">';
+		            	html+='<div class="sl-content"><img src="img/ico_remind_article@2x.png">';
+		            	html+='<p>'+list[i]+'</p></div>';  
+		            	html+='<div class="sl-opts"><span style="background-color: #F95F61; color: #fff;" onclick="testA()">标记已读</span><span style="background-color: #ff9c00; color: #fff;" onclick="testA()">删除</span></div>';
+		            	html+='</li>';
+					}
+	                
+					$('#dataTable').html(html);
+	            }else{
+	            	var html = "";
+	            	html+='<li class="sl-li ui-border-b">';
+	            	html+='<div class="sl-content"><img src="img/ico_remind_article@2x.png">';
+	            	html+='<p>您还没有发布过商机</p></div>';  
+	            	html+='</li>';
+	                $('#dataTable').html(html);
+	            }
+	        }
+	    });
+	} 
+	
+    
+</script>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="telephone=no" name="format-detection" />
+<title>发布商机</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="css/shake.css" rel="stylesheet" type="text/css">
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="css/animate.min.css" rel="stylesheet" type="text/css">
+<link href="css/idangerous.swiper.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/mobiscroll.custom-2.17.1.min.css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/wo.js"></script>
+<script type="text/javascript" src="js/urlParam.js"></script>
+<script type="text/javascript" src="js/sinoCookie.js"></script>
+<script type="text/javascript" src="js/mobiscroll.custom-2.17.1.min.js"></script>
+</head>
+<body style="background-color: #fff !important;">
+<div class="warpe">
+        <div class="head">
+            <!-- <a href="myinfo.html" class="return"><i class="icon-chevron-left"></i> 返回</a> -->
+           发布商机
+        </div>
+        <div class="main work_right">
+            <div class="inter_add2">
+                <ul>
+                    <li class="animated bounceInLeft">
+                        <a href="#">
+                            <span class="puff_left"><label>标题 &nbsp; &nbsp; &nbsp; ：</label><input id="biaoti" type="text" placeholder="请输入标题"></span>
+                        </a>
+                    </li>
+                    <li class="animated bounceInLeft">
+                        <a href="#">
+                            <span class="puff_left"><label>标签 &nbsp; &nbsp; &nbsp; ：</label><input id="biaoqian" type="text" placeholder="请输入标签"></span>
+                        </a>
+                    </li>
+                    <li class="animated bounceInLeft">
+                        <a href="#">
+                            <span class="puff_left"><label>联系称呼：</label><input id="chenghu" type="text" placeholder="请输入称呼"></span>
+                        </a>
+                    </li>
+                    <li class="animated bounceInLeft">
+                        <a href="#">
+                            <span class="puff_left"><label>联系方式：</label><input id="fangshi" type="text" placeholder="请输入联系方式，手机号、微信、邮箱等"></span>
+                        </a>
+                    </li>
+                    <li class="animated bounceInLeft">
+                        <a href="#">
+                            <span class="puff_left"><label>商机描述：</label><textarea id="miaoshu" name="miaoshu" placeholder="请输入描述" style="width:200px;height:80px;border-style:none"></textarea></span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="id_bth inersest_bth animated bounceIn bottom_btn">
+                    <a onclick="submit()">确定</a>
+                </div>    
+                <div class="id_bth inersest_bth animated bounceIn bottom_btn">
+                    <a onclick="logout()">退出</a>
+                </div>                     
+            </div>
+        </div>
+</div>
+
+<div class="Collection animatedbou bounces fadeInUp dis_none" >
+       <div class='bouncesTop' onclick='hide();'></div>
+       <div class='bouncesBottom M_no'>
+           <p class="bottomTitle" id="mb_tit"></p>
+           <p id="mb_msg1"></p>
+           <p id="mb_msg2"></p>
+           <div class="id_bth inersest_bth prombtn">
+                    <a id="mb_btn_ok">确定</a>
+           </div>
+       </div>
+    </div>
+<div class="navside">
+    <ul>
+        <li class="margin_left animated bounceInLeft homeTab">
+            <a href="myinfolist.html" >
+                <p><i class="icon-home-hover1"></i> </p>
+                <span>商机列表</span>
+            </a>
+        </li>
+        <!-- <li class="animated bounceInRight searchTab">
+            <a href="search.html">
+                <p><i class="icon-globe1"></i> </p>
+                <span>查询</span>
+            </a>
+        </li>
+        <li class="animated bounceInLeft centers">
+            <a href="http://121.28.128.10:20523/app/navigation/toNavigationInfo.action">
+                <p><i class="icon-star-empty1"></i> </p>
+                <span>地图</span>
+            </a>
+        </li> -->
+        <li class="animated bounceInRight workTab  work_tab_hover">
+            <a href="infoform.html" class="navside_hover">
+                <p><i class="icon-columns1"></i> </p>
+                <span>发布商机</span>
+            </a>
+        </li>
+        <li class="animated bounceInLeft mineTab">
+            <a href="mine.html">
+                <p><i class="  icon-th-large1"></i> </p>
+                <span>我的</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    var url;
+    var phone;
+    $(function(){
+
+        if(getCookie('phone')!=null){
+            phone = getCookie('phone');
+        }else{
+        	window.location.href='login.html';
+        }
+        $.getJSON('js/json.txt',function(data){
+            url = data.url;
+        });
+
+    })
+    function logout(){
+        delCookie('phone');
+        window.location.href="login.html";
+    }
+	 function info(biaoti,biaoqian,chenghu,fangshi,miaoshu){
+             this.biaoti = biaoti;
+             this.biaoqian = biaoqian;
+             this.chenghu =chenghu;
+             this.fangshi =fangshi;
+             this.miaoshu =miaoshu;
+     }
+    function submit(){
+        
+        var biaoti = $('#biaoti').val();
+        var biaoqian = $('#biaoqian').val();
+        var chenghu = $('#chenghu').val();
+        var fangshi = $('#fangshi').val();
+        var miaoshu = $('#miaoshu').val();
+		if(biaoti=='' || biaoqian=='' || chenghu=='' || fangshi=='' || miaoshu==''){
+			alert('表单数据均为必填项');
+			return false;
+		}
+        $.ajax({
+            type:'GET',
+            dataType:'json',
+            url:url+"/login/fabuInfo?"+'biaoti='+$('#biaoti').val()+'&biaoqian='+$('#biaoqian').val()+'&chenghu='+$('#chenghu').val()+'&fangshi='+$('#fangshi').val()+'&miaoshu='+$('#miaoshu').val()+'&username='+phone,
+            //url:"http://localhost:15580/ronglu/login/fabuInfo?"+'biaoti='+$('#biaoti').val()+'&biaoqian='+$('#biaoqian').val()+'&chenghu='+$('#chenghu').val()+'&fangshi='+$('#fangshi').val()+'&miaoshu='+$('#miaoshu').val(),
+            success:function(req){
+                if(req==1){
+                    $('.Collection').show();
+                    $("#mb_tit").html("信温馨示：");
+                    $("#mb_msg1").html("信息发布成功！");
+                    $("#mb_msg2").html("感谢您使用荣路快讯");
+                    $("#mb_btn_ok").attr("onclick","location='infoform.html'");
+                }else{
+                     var msg = req.retJson.retDesc;
+                    $("#mb_tit").html("信温馨示：");
+                    $("#mb_msg1").html("信息发布败！");
+                    $("#mb_msg2").html(msg);
+                    $("#mb_btn_ok").attr("onclick","hide();");
+                }
+            }
+        });
+    }
+     function hide(){
+            $('.Collection').hide();
+     }
+</script>
+</body>
+</html>

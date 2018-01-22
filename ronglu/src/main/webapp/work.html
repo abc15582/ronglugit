@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>商机列表</title>
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/shake.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/animate.min.css" rel="stylesheet" type="text/css">
+    <link href="css/idangerous.swiper.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/mobiscroll.custom-2.17.1.min.css" />
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/wo.js"></script>
+    <script type="text/javascript" src="js/mobiscroll.custom-2.17.1.min.js"></script>
+    <script type="text/javascript" src="js/idangerous.swiper.min.js"></script>
+    <script type="text/javascript" src="js/urlParam.js"></script>
+    <script>
+
+        $(document).ready(function(){
+              //日期选择框
+       $('#startTime,#endTime').mobiscroll().date({
+			theme: 'ios',
+			display: 'bottom',
+			theme: 'ios',        // Specify theme like: theme: 'ios' or omit setting to use default
+			lang: 'zh',      // Specify language like: lang: 'pl' or omit setting to use default
+			display: 'bottom',    // Specify display mode like: display: 'bottom' or omit setting to use default
+			mode: '',          // More info about mode: http://docs.mobiscroll.com/2-17-1/datetime#!opt-mode
+			dateFormat: 'yy-mm-dd', // 日期格式
+			setText: '确定', //确认按钮名称
+			//headerText: '请您选择', 
+			/*headerText: function (valueText) { //自定义弹出框头部格式  
+				array = valueText.split('-');  
+				return array[0] + "年" + array[1] + "月" + array[2] + "日";  
+			},*/ 
+
+			//cancelText: '清空',//取消按钮
+			startYear: (new Date()).getFullYear()-5, //开始年份
+			endYear: (new Date()).getFullYear() +5, //结束年份
+		});
+         //下拉选择框
+       $('#licensingMatters').mobiscroll().select({
+			theme: 'ios',
+			display: 'bottom',
+			theme: '',        // Specify theme like: theme: 'ios' or omit setting to use default
+			lang: 'zh',      // Specify language like: lang: 'pl' or omit setting to use default
+			mode: '',          // More info about mode: http://docs.mobiscroll.com/2-17-1/datetime#!opt-mode
+			minWidth: 200,
+			headerText: '选择许可事项'
+		});
+            
+        //控制tab选项滚动
+        var elm2 = $('.xx_tab');
+//        var startPos = $(elm2).offset().top;
+//        $.event.add(window, "scroll", function() {
+//            var p = $(window).scrollTop();
+//            $(elm2).css('position',((p) > startPos) ? 'fixed' : 'static');
+//            $(elm2).css('width',((p) > startPos) ? '100%' : '');
+//            $(elm2).css('top',((p) > startPos) ? '0rem' : '');
+//            $(elm2).css('opacity',((p) > startPos) ? '0.95' : '');
+//        });
+        });
+        
+       
+    </script>
+</head>
+<body>
+<div class="warpe">
+    
+    <div class="head">
+        商机列表
+    </div>
+    <div class="tabs my_tab">
+        <a id="tab_1" href="#" hidefocus="true" class="active">便民服务</a>
+        <a id="tab_2" href="#" hidefocus="true" >行政审批</a>
+    </div>
+    
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+                <div class="content-slide">
+                    <div class="aui-list-cells work_list">
+                        <a onclick="showGuahao();" class="aui-list-cell">
+                            <div class="aui-list-cell-fl"><img src="img/index_ico01@2x.png"></div>
+                            <div class="aui-list-cell-cn">北京市预约挂号统一平台</div>
+                        </a>
+                        <a href="http://116.7.236.130:10032/index.html" class="aui-list-cell">
+                            <div class="aui-list-cell-fl"><img src="img/index_ico02@2x.png"></div>
+                            <div class="aui-list-cell-cn">预防接种</div>
+                        </a>
+                        <a href="#" class="aui-list-cell">
+                            <div class="aui-list-cell-fl"><img src="img/index_ico03@2x.png"></div>
+                            <div class="aui-list-cell-cn">生育服务证办理</div>
+                        </a>
+                        <a href="jisheng.html" class="aui-list-cell">
+                            <div class="aui-list-cell-fl"><img src="img/index_ico06@2x.png"></div>
+                            <div class="aui-list-cell-cn">免费计生药具</div>
+                        </a>
+                        <a href="gopreg.html" class="aui-list-cell">
+                            <div class="aui-list-cell-fl"><img src="img/index_ico07@2x.png"></div>
+                            <div class="aui-list-cell-cn">婚检孕检</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="content-slide">
+                    <div class="main work_right">
+                        <div class="inter_add2">
+                            <ul>
+                                <li class="animated bounceInLeft">
+                                    <a href="#">
+                                        <span class="puff_left"><label>单位名称：</label><input id="officename" type="text" placeholder="请输入单位名称"></span>
+                                    </a>
+                                </li>
+                                <li class="animated bounceInRight">
+                                    <a href="#">
+                                        <span class="puff_left"><label>批准日期：</label><input id="startTime" type="text" placeholder="批准日期起始"></span>
+                                    </a>
+                                </li>
+                                <li class="animated bounceInRight">
+                                    <a href="#">
+                                        <span class="puff_left"><label>批准日期：</label><input id="endTime" type="text" placeholder="批准日期结束"></span>
+                                    </a>
+                                </li>
+                                <li class="animated bounceInRight selectstype">
+                                    <label>许可事项：</label>
+                                    <select name="licensingMatters" id="licensingMatters" onchange="changeCss(this.name,this.value)">
+                                        <option value="" title="选择许可事项">选择许可事项</option>
+						             </select>
+                                    <i class="icon-angle-down"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="id_bth inersest_bth animated bounceIn">
+                            <a onclick="initData();">查询</a>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="table-box" style="padding-bottom:2.5rem;">
+                    <table  class="premium-table">
+                        <thead><tr><th>序号</th><th>单位名称</th><th>许可事项</th><th>状态</th></tr></thead>
+                        <tbody id="dataTable"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
+
+    
+<div class="navside">
+    <ul>
+        <li class="margin_left animated bounceInLeft homeTab">
+            <a href="index.html">
+                <p><i class="icon-home-hover1"></i> </p>
+                <span>首页</span>
+            </a>
+        </li>
+        <li class="animated bounceInRight searchTab">
+            <a href="search.html">
+                <p><i class="icon-globe1"></i> </p>
+                <span>查询</span>
+            </a>
+        </li>
+        <li class="animated bounceInLeft centers">
+            <a href="http://121.28.128.10:20523/app/navigation/toNavigationInfo.action">
+                <p><i class="icon-star-empty1"></i> </p>
+                <span>地图</span>
+            </a>
+        </li>
+        <li class="animated bounceInRight workTab  work_tab_hover">
+            <a href="work.html" class="navside_hover">
+                <p><i class="icon-columns1"></i> </p>
+                <span>办事</span>
+            </a>
+        </li>
+        <li class="animated bounceInLeft mineTab">
+            <a href="mine.html">
+                <p><i class="  icon-th-large1"></i> </p>
+                <span>我的</span>
+            </a>
+        </li>
+    </ul>
+</div>
+    
+<div id="guahaoTip" class="Collection animatedbou bounces fadeInUp dis_none" >
+   <div class='bouncesTop' onclick='hideGuahao();'></div>
+   <div class='bouncesBottom M_no' style="padding-top:3rem;">
+       <div class="bottomTitle" style="line-height:5rem;"><img src="img/ico_Platform permissions@1x.png"><span>北京市预约挂号统一平台</span></div>
+       <p>本服务需要获取以下权限</p>
+       <p class="tipp">读物您的身份证信息</p>
+       <div class="id_bth inersest_bth shouquan_btn">
+            <a class='butongyi' onclick='hideGuahao();' >不同意</a><a class='tongyi' onclick='guaHao();' >同意</a>
+       </div>
+   </div>
+</div> 
+    
+<script type="text/javascript">
+        var url;
+        var phone;
+        $(function(){
+            $("#licensingMatters_dummy").css("color","#666");
+            if(UrlParam.param('tab_index')==2){
+                $('#tab_1').attr('class','');
+                $('#tab_2').attr('class','active');
+                tabsSwiper.slideTo( UrlParam.param('tab_index') );
+            }
+            $.getJSON ("js/json.txt", function (data) {  
+                url = data.url;
+                initData();
+            });
+            
+        });
+        function initData() {
+            var officename1 = $("#officename").val();
+			var startTime1 = $("#startTime").val();
+			var endTime1 = $("#endTime").val();
+            if(stringToDate(endTime1)>stringToDate(startTime1)){
+                $('#dataTable').html("<tr><td></td><td>结束日期不可大于起始日期</td><td></td></tr>");
+                return;
+            }
+            
+            
+			var licensingMatters1 = $("#licensingMatters").val();
+			//alert(officename1+"-1 "+startTime1+"-2 "+endTime1+"-3 "+licensingMatters1+"-4");
+			officename1 = encodeURI(encodeURI(officename1));
+			/* $.ajax({
+                type:'POST',
+                dataType:'json',
+                url:url+"?reqJson={'queryType':'getXZSPInfo','reqData':{'officename1':'"+officename1+"','startTime1':'"+startTime1+"','endTime1':'"+endTime1+"','licensingMatters1':'"+licensingMatters1+"','currentPage':'1','pageSize':'10'},'appId':'1','version':'1.0'}&sign=185a0a28b7153aeae053ef019c25df23",
+                success:function(req){
+                    if(req.retJson.retCode==1){
+                        var html = "";
+						var selectHtml= '';
+                        var list = req.retJson.retData.resultList;
+                        for(var i=0; i<list.length;i++){
+                            var state = "不批准";
+                            var tdclass = "";
+                            if(list[i].state==3){
+                                state = "批准";
+                            }
+                            
+                            ((i+1)%2)==0?tdclass="shen":"";
+                            html+="<tr class='"+tdclass+"'><td width='12%'>"+(i+1)+"</td><td width='46%'><a href='shenpixq.html?id="+list[i].id+"'>"+list[i].officename+"</a></td><td width='30%'>"+list[i].kind_name+"</td><td width='12%'>"+state+"</td></tr>";
+						}
+						$('#dataTable').html(html);
+						
+                        var selects = req.retJson.retData.xKSXMap;
+						for(var key in selects){
+							selectHtml +='<option value='+key+' title='+selects[key] +'>'+selects[key]+'</option>';
+						}
+                        $('#licensingMatters').html(selectHtml);
+                    }else{
+                        $('#dataTable').html("<tr><td></td><td>没有查询到符合条件的数据</td><td></td><td></td></tr>");
+                    }
+                }
+            }); */
+		}    
+    
+    
+    var tabsSwiper = new Swiper('.swiper-container',{
+        speed:500,
+        onSlideChangeStart: function(){
+            $(".tabs .active").removeClass('active');
+            $(".tabs a").eq(tabsSwiper.activeIndex).addClass('active');
+        }
+    });
+    $(".tabs a").on('touchstart mousedown',function(e){
+        e.preventDefault()
+        $(".tabs .active").removeClass('active')
+        $(this).addClass('active')
+        tabsSwiper.slideTo( $(this).index() )
+    })
+    $(".tabs a").click(function(e){
+        e.preventDefault()
+    })
+    
+	function stringToDate(dateStr) {
+        var fullDate = dateStr.split("-");  
+        return new Date(fullDate[0], fullDate[1]-1, fullDate[2], 0, 0, 0);  
+	}
+
+    function showGuahao(){
+            $("#guahaoTip").show();
+    }
+    function hideGuahao(){
+            $("#guahaoTip").hide();
+    }
+    function guaHao(){
+            /* $.ajax({
+                type:'POST',
+                dataType:'json',
+                url:url+"?reqJson={'queryType':'getAppoint','reqData':{'phone':'"+phone+"'},'appId':'1','version':'1.0'}&sign=185a0a28b7153aeae053ef019c25df",
+                success:function(req){
+                    if(req.retJson.retCode==1){
+                        //$('#guaHao').attr('href',req.retJson.retData.url);
+                        window.location.href = req.retJson.retData.url
+                    }else{
+                        alert('此功能需要登录后使用');
+                    }
+                }
+            }); */
+    }
+ 
+</script>
+</body>
+</html>
